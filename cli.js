@@ -6,12 +6,12 @@ var strongPassword = require('./strong-password');
 
 var argv = minimist(process.argv.slice(2),{
 	alias: {
-		numbers: 'n',
-		symbols: 's',
+		simple: 's',
 		len: 'l'
 	},
-	boolean: ['numbers', 'symbols']
+	boolean: 'simple'
 });
 
 console.log(strongPassword(argv));
+
 process.exit(0);

@@ -9,13 +9,15 @@ var chars = {
 function randomPassword(options, callback){
 	options = defaults(options, {
 		len: 16,
-		numbers: true,
-		symbols: true
+		simple: false
 	});
 
 	var charsDisposal = [chars.letters];
-	if (options.numbers) charsDisposal.push(chars.numbers);
-	if (options.symbols) charsDisposal.push(chars.symbols);
+
+	if (!options.simple){
+		charsDisposal.push(chars.numbers);
+		charsDisposal.push(chars.symbols);
+	}
 
 	var result = '';
 	for (var i = 0, len = options.len; i < len; i++){
@@ -25,12 +27,9 @@ function randomPassword(options, callback){
 
 	}
 
-	if (callback){
-		callback(null, result);
+	if (callback) callback(null, result);
 
-	} else {
-		return result;
-	}
+	return result;
 }
 
 module.exports = randomPassword;
