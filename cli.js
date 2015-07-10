@@ -2,7 +2,7 @@
 
 var minimist = require('minimist');
 
-var strongPassword = require('./strong-password');
+var strongPassword = require('./index');
 
 var argv = minimist(process.argv.slice(2),{
 	alias: {
