@@ -1,6 +1,6 @@
 {
   "name": "random-password",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Returns a random string that can be used as a password",
   "main": "index.js",
   "scripts": {
