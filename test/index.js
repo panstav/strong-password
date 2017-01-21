@@ -2,13 +2,13 @@ const assert = require('power-assert');
 
 const strongPassword = require('../index');
 
-describe('StrongPassword', () => {
+suite('StrongPassword', () => {
 
-	it('Should default to a long password', () => {
+	test('Should default to a long password', () => {
 		assert(strongPassword().length > 15);
 	});
 
-	it('Should default to various types of characters', () => {
+	test('Should default to various types of characters', () => {
 
 		const outputPassword = strongPassword();
 
@@ -18,14 +18,14 @@ describe('StrongPassword', () => {
 
 	});
 
-	it('Should output a password of a desired length', () => {
+	test('Should output a password of a desired length', () => {
 
 		assert(strongPassword({ len: 10 }).length === 10);
 		assert(strongPassword({ len: 20 }).length === 20);
 
 	});
 
-	it('Should show only letters as a simple password', () => {
+	test('Should show only letters as a simple password', () => {
 
 		const outputPassword = strongPassword({ simple: true });
 
@@ -37,13 +37,13 @@ describe('StrongPassword', () => {
 
 });
 
-describe('Module', () => {
+suite('Module', () => {
 
-	it('Should return result', () => {
+	test('Should return result', () => {
 		assert(typeof(strongPassword()) === 'string');
 	});
 
-	it('Should receive a callback and call it with result', () => {
+	test('Should receive a callback and call it with result', () => {
 
 		strongPassword({}, (err, result) => {
 			assert(err === null);

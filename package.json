@@ -4,7 +4,7 @@
   "description": "Returns a random string that can be used as a password",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha test/"
+    "test": "node_modules/.bin/mocha -u tdd test/"
   },
   "author": "Stav Pan Geffen",
   "license": "none",
