@@ -36,3 +36,20 @@ describe('StrongPassword', () => {
 	});
 
 });
+
+describe('Module', () => {
+
+	it('Should return result', () => {
+		assert(typeof(strongPassword()) === 'string');
+	});
+
+	it('Should receive a callback and call it with result', () => {
+
+		strongPassword({}, (err, result) => {
+			assert(err === null);
+			assert(typeof(result) === 'string')
+		});
+
+	});
+
+});
