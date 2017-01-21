@@ -1,5 +1,3 @@
-var defaults = require('defaults');
-
 var chars = {
 	letters: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 	numbers: '0123456789',
@@ -10,27 +8,34 @@ module.exports = randomPassword;
 module.exports.charTypes = chars;
 
 function randomPassword(options, callback){
-	options = defaults(options, {
-		len: 16,
-		simple: false
-	});
 
-	var charsDisposal = [chars.letters];
+	// set defaults options
+	var options = options || {};
+	var passlen = options.len || 16;
+	var simple = options.simple || false;
 
-	if (!options.simple){
-		charsDisposal.push(chars.numbers);
-		charsDisposal.push(chars.symbols);
+	// collect relevant characters
+	var charsInventory = [chars.letters];
+	if (!simple){
+		charsInventory.push(chars.numbers);
+		charsInventory.push(chars.symbols);
 	}
 
+	// add up a password made up of random characters
 	var result = '';
-	for (var i = 0, len = options.len; i < len; i++){
+	while(result.length < passlen){
 
-		var charType = charsDisposal[Math.round(Math.random() * (charsDisposal.length - 1))];
-		result += charType[Math.round(Math.random() * (charType.length - 1))];
+		// choose a random characters type
+		var randomIndexForType = Math.round(Math.random() * (charsInventory.length - 1));
+		var chosenType = charsInventory[randomIndexForType];
+
+		// choose a random character of that type
+		var randomIndexForChar = Math.round(Math.random() * (chosenType.length - 1));
+		result += chosenType[randomIndexForChar];
 
 	}
 
+	// answer back
 	if (callback) callback(null, result);
-
 	return result;
 }
