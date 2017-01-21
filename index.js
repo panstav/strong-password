@@ -6,6 +6,9 @@ var chars = {
 	symbols: '`-=[]\\;\',./*+!@#$%^&*()_{}|:"<>?'
 };
 
+module.exports = randomPassword;
+module.exports.charTypes = chars;
+
 function randomPassword(options, callback){
 	options = defaults(options, {
 		len: 16,
@@ -31,5 +34,3 @@ function randomPassword(options, callback){
 
 	return result;
 }
-
-module.exports = randomPassword;
